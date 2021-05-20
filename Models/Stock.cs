@@ -22,42 +22,42 @@ namespace 管理系统.Models
         public string Company { get; set; }
 
         [Required(ErrorMessage = "{0} 不能为空")]
-        [DataType(DataType.Text)]
+        [Range(0, int.MaxValue, ErrorMessage = "请输入有效的整数")]
         [Display(Name = "库存总数")]
         public int StockNum { get; set; }
 
         [Required(ErrorMessage = "{0} 不能为空")]
-        [DataType(DataType.Text)]
+        [Range(0, int.MaxValue, ErrorMessage = "请输入有效的整数")]
         [Display(Name = "财务库存")]
         public int FinancialStock { get; set; }
 
         [Required(ErrorMessage = "{0} 不能为空")]
-        [DataType(DataType.Text)]
+        [Range(0, int.MaxValue, ErrorMessage = "请输入有效的整数")]
         [Display(Name = "领料数")]
         public int PickingNum { get; set; }
 
         [Required(ErrorMessage = "{0} 不能为空")]
-        [DataType(DataType.Text)]
+        [Range(0, int.MaxValue, ErrorMessage = "请输入有效的整数")]
         [Display(Name = "订货数")]
         public int OrderNum { get; set; }
 
         [Required(ErrorMessage = "{0} 不能为空")]
-        [DataType(DataType.Text)]
+        [Range(0, int.MaxValue, ErrorMessage = "请输入有效的整数")]
         [Display(Name = "可销数")]
         public int PinableNum { get; set; }
 
         [Required(ErrorMessage = "{0} 不能为空")]
-        [DataType(DataType.Text)]
+        [DataType(DataType.Currency)]
         [Display(Name = "成本价")]
         public decimal CostPrice { get; set; }
 
         [Required(ErrorMessage = "{0} 不能为空")]
-        [DataType(DataType.Text)]
+        [DataType(DataType.Currency)]
         [Display(Name = "库存金额")]
         public decimal StockAmount { get; set; }
 
         [Required(ErrorMessage = "{0} 不能为空")]
-        [DataType(DataType.Text)]
+        [Range(0, int.MaxValue, ErrorMessage = "请输入有效的整数")]
         [Display(Name = "件数")]
         public int Total { get; set; }
     }

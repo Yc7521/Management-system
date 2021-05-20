@@ -25,6 +25,10 @@ namespace 管理系统.Controllers
             return View();
         }
 
+        /// <summary>
+        /// Just a test for admin
+        /// </summary>
+        /// <returns></returns>
         [Authorize(Roles = Role.Admin)]
         public IActionResult Privacy()
         {
