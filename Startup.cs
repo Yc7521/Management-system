@@ -28,8 +28,11 @@ namespace 管理系统
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
+            {
+                //options.UseSqlServer(
+                //    Configuration.GetConnectionString("SqlServerConnection"));
+                options.UseSqlite(Configuration.GetConnectionString("SqliteConnection"));
+            });
             services.AddDatabaseDeveloperPageExceptionFilter();
 
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
