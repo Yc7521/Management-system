@@ -1,10 +1,14 @@
 using System;
+using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Identity;
 
 namespace 管理系统.Models
 {
-    public class User
+    public struct Role
     {
-        public string Id { get; set; }
-        enum jurisdiction{管理员,用户}
+        public const string Unknow = "unknow";
+        public const string Admin = "admin";
+        public const string User = "user";
+        public static readonly string[] Roles = new[] { Unknow, Admin, User };
     }
 }

@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using 管理系统.Models;
 
 namespace 管理系统.Controllers
@@ -23,6 +25,7 @@ namespace 管理系统.Controllers
             return View();
         }
 
+        [Authorize(Roles = Role.Admin)]
         public IActionResult Privacy()
         {
             return View();
