@@ -36,8 +36,8 @@ namespace 管理系统.Areas.Identity.Pages.Account
             public string Password { get; set; }
 
             [DataType(DataType.Password)]
-            [Display(Name = "Confirm password")]
-            [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+            [Display(Name = "确认密码")]
+            [Compare("Password", ErrorMessage = "密码和确认密码不匹配.")]
             public string ConfirmPassword { get; set; }
 
             public string Code { get; set; }
@@ -47,7 +47,7 @@ namespace 管理系统.Areas.Identity.Pages.Account
         {
             if (code == null)
             {
-                return BadRequest("A code must be supplied for password reset.");
+                return BadRequest("必须提供密码重置密码.");
             }
             else
             {

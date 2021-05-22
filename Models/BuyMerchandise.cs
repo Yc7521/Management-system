@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
 
 namespace 管理系统.Models
 {
@@ -64,5 +65,8 @@ namespace 管理系统.Models
         [DataType(DataType.MultilineText)]
         [Display(Name = "说明")]
         public string Explain { get; set; }
+
+        [Display(Name = "商品明细")]
+        public List<BuyMerchandise_Merchandise> CommodityDetails{ get; set;}
     }
 }

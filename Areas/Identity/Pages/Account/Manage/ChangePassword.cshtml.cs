@@ -35,18 +35,18 @@ namespace 管理系统.Areas.Identity.Pages.Account.Manage
         {
             [Required]
             [DataType(DataType.Password)]
-            [Display(Name = "Current password")]
+            [Display(Name = "当前密码")]
             public string OldPassword { get; set; }
 
             [Required]
-            [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
+            [StringLength(100, ErrorMessage = "这 {0} 长度必须至少为 {2} 并且最长为 {1} 个字符.", MinimumLength = 6)]
             [DataType(DataType.Password)]
-            [Display(Name = "New password")]
+            [Display(Name = "新密码")]
             public string NewPassword { get; set; }
 
             [DataType(DataType.Password)]
-            [Display(Name = "Confirm new password")]
-            [Compare("NewPassword", ErrorMessage = "The new password and confirmation password do not match.")]
+            [Display(Name = "确认新密码")]
+            [Compare("NewPassword", ErrorMessage = "新密码和确认密码不匹配.")]
             public string ConfirmPassword { get; set; }
         }
 
@@ -55,7 +55,7 @@ namespace 管理系统.Areas.Identity.Pages.Account.Manage
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
-                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+                return NotFound($"无法加载标识为 '{_userManager.GetUserId(User)}'的用户.");
             }
 
             var hasPassword = await _userManager.HasPasswordAsync(user);
@@ -77,7 +77,7 @@ namespace 管理系统.Areas.Identity.Pages.Account.Manage
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
-                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+                return NotFound($"无法加载标识为 '{_userManager.GetUserId(User)}'的用户.");
             }
 
             var changePasswordResult = await _userManager.ChangePasswordAsync(user, Input.OldPassword, Input.NewPassword);
@@ -91,8 +91,8 @@ namespace 管理系统.Areas.Identity.Pages.Account.Manage
             }
 
             await _signInManager.RefreshSignInAsync(user);
-            _logger.LogInformation("User changed their password successfully.");
-            StatusMessage = "Your password has been changed.";
+            _logger.LogInformation("用户成功更改了密码.");
+            StatusMessage = "您的密码已被更改.";
 
             return RedirectToPage();
         }

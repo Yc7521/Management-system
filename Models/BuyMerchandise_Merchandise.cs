@@ -1,4 +1,6 @@
 using System;
+using System.ComponentModel.DataAnnotations;
+
 namespace 管理系统.Models
 {
     public class BuyMerchandise_Merchandise

@@ -37,7 +37,7 @@ namespace 管理系统.Areas.Identity.Pages.Account
             var user = await _userManager.FindByEmailAsync(email);
             if (user == null)
             {
-                return NotFound($"Unable to load user with email '{email}'.");
+                return NotFound($"无法向用户加载电子邮件 '{email}'.");
             }
 
             Email = email;

@@ -58,8 +58,8 @@ namespace 管理系统.Areas.Identity.Pages.Account
 
                 await _emailSender.SendEmailAsync(
                     Input.Email,
-                    "Reset Password",
-                    $"Please reset your password by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+                    "重设密码",
+                    $"请通过以下方式重设密码 <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>点击这</a>.");
 
                 return RedirectToPage("./ForgotPasswordConfirmation");
             }

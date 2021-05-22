@@ -49,7 +49,7 @@ namespace 管理系统.Areas.Identity.Pages.Account
             var user = await _userManager.FindByEmailAsync(Input.Email);
             if (user == null)
             {
-                ModelState.AddModelError(string.Empty, "Verification email sent. Please check your email.");
+                ModelState.AddModelError(string.Empty, "验证电子邮件已发送。 请查看你的邮箱.");
                 return Page();
             }
 
@@ -63,10 +63,10 @@ namespace 管理系统.Areas.Identity.Pages.Account
                 protocol: Request.Scheme);
             await _emailSender.SendEmailAsync(
                 Input.Email,
-                "Confirm your email",
-                $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+                "确认您的电子邮件",
+                $"请通过以下方式确认您的帐户 <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
 
-            ModelState.AddModelError(string.Empty, "Verification email sent. Please check your email.");
+            ModelState.AddModelError(string.Empty, "验证电子邮件已发送。 请查看你的邮箱.");
             return Page();
         }
     }

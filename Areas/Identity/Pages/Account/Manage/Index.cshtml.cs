@@ -34,7 +34,7 @@ namespace 管理系统.Areas.Identity.Pages.Account.Manage
         public class InputModel
         {
             [Phone]
-            [Display(Name = "Phone number")]
+            [Display(Name = "电话号码")]
             public string PhoneNumber { get; set; }
 
             [Display(Name = "权限")]
@@ -61,7 +61,7 @@ namespace 管理系统.Areas.Identity.Pages.Account.Manage
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
-                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+                return NotFound($"无法加载标识为 '{_userManager.GetUserId(User)}'的用户.");
             }
 
             await LoadAsync(user);
@@ -73,7 +73,7 @@ namespace 管理系统.Areas.Identity.Pages.Account.Manage
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
-                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+                return NotFound($"无法加载标识为 '{_userManager.GetUserId(User)}'的用户.");
             }
 
             if (!ModelState.IsValid)
@@ -100,13 +100,13 @@ namespace 管理系统.Areas.Identity.Pages.Account.Manage
                 var setPhoneResult = await _userManager.SetPhoneNumberAsync(user, Input.PhoneNumber);
                 if (!setPhoneResult.Succeeded)
                 {
-                    StatusMessage = "Unexpected error when trying to set phone number.";
+                    StatusMessage = "试图设置电话号码时出现意外错误.";
                     return RedirectToPage();
                 }
             }
 
             await _signInManager.RefreshSignInAsync(user);
-            StatusMessage = "Your profile has been updated";
+            StatusMessage = "您的个人资料已更新";
             return RedirectToPage();
         }
     }

@@ -52,14 +52,14 @@ namespace 管理系统.Areas.Identity.Pages.Account
             public string UserName { get; set; }
 
             [Required]
-            [StringLength(100, ErrorMessage = "{0} 至少 {2} 位，且不大于 {1} 位", MinimumLength = 6)]
+            [StringLength(100, ErrorMessage = "{0}至少{2}位，且不大于{1}位", MinimumLength = 6)]
             [DataType(DataType.Password)]
             [Display(Name = "密码")]
             public string Password { get; set; }
 
             [DataType(DataType.Password)]
-            [Display(Name = "Confirm password")]
-            [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+            [Display(Name = "确认密码")]
+            [Compare("Password", ErrorMessage = "密码和确认密码不匹配.")]
             public string ConfirmPassword { get; set; }
         }
 
@@ -79,7 +79,7 @@ namespace 管理系统.Areas.Identity.Pages.Account
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
-                    _logger.LogInformation($"User({Input.UserName}) created a new account with password.");
+                    _logger.LogInformation($"用户({Input.UserName}) 使用密码创建了一个新帐户.");
 
                     var result2 = await _userManager.AddToRoleAsync(user, Role.User);
                     if (result2.Succeeded)

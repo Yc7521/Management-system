@@ -71,13 +71,13 @@ namespace 管理系统.Areas.Identity.Pages.Account
             returnUrl = returnUrl ?? Url.Content("~/");
             if (remoteError != null)
             {
-                ErrorMessage = $"Error from external provider: {remoteError}";
+                ErrorMessage = $"来自外部提供商的错误: {remoteError}";
                 return RedirectToPage("./Login", new {ReturnUrl = returnUrl });
             }
             var info = await _signInManager.GetExternalLoginInfoAsync();
             if (info == null)
             {
-                ErrorMessage = "Error loading external login information.";
+                ErrorMessage = "加载外部登录信息时出错.";
                 return RedirectToPage("./Login", new { ReturnUrl = returnUrl });
             }
 
@@ -115,7 +115,7 @@ namespace 管理系统.Areas.Identity.Pages.Account
             var info = await _signInManager.GetExternalLoginInfoAsync();
             if (info == null)
             {
-                ErrorMessage = "Error loading external login information during confirmation.";
+                ErrorMessage = "确认期间加载外部登录信息时出错.";
                 return RedirectToPage("./Login", new { ReturnUrl = returnUrl });
             }
 
@@ -129,7 +129,7 @@ namespace 管理系统.Areas.Identity.Pages.Account
                     result = await _userManager.AddLoginAsync(user, info);
                     if (result.Succeeded)
                     {
-                        _logger.LogInformation("User created an account using {UserName} provider.", info.LoginProvider);
+                        _logger.LogInformation("用户使用创建了一个帐户 {UserName} .", info.LoginProvider);
 
                         var userId = await _userManager.GetUserIdAsync(user);
                         var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
@@ -140,7 +140,7 @@ namespace 管理系统.Areas.Identity.Pages.Account
                             values: new { area = "Identity", userId = userId, code = code },
                             protocol: Request.Scheme);
 
-                        await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
+                        await _emailSender.SendEmailAsync(Input.Email, "确认您的电子邮件",
                             $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
 
                         // If account confirmation is required, we need to show the link if we don't have a real email sender

@@ -45,7 +45,7 @@ namespace 管理系统.Areas.Identity.Pages.Account.Manage
         {
             [Required]
             [EmailAddress]
-            [Display(Name = "New email")]
+            [Display(Name = "新邮箱")]
             public string NewEmail { get; set; }
         }
 

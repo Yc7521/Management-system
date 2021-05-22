@@ -1,4 +1,6 @@
 using System;
+using System.ComponentModel.DataAnnotations;
+
 namespace 管理系统.Models
 {
     public class OutMerchandise_Merchandise
@@ -37,7 +39,7 @@ namespace 管理系统.Models
         [Required(ErrorMessage = "{0} 不能为空")]
         [DataType(DataType.Text)]
         [Display(Name = "商品条码")]
-        public int SN{ get; set;}
+        public int BarCode{ get; set;}
 
         
     }
