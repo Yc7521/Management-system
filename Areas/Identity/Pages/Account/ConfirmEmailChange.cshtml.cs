@@ -57,7 +57,7 @@ namespace 管理系统.Areas.Identity.Pages.Account
             }
 
             await _signInManager.RefreshSignInAsync(user);
-            StatusMessage = "Thank you for confirming your email change.";
+            StatusMessage = "感谢您确认您的电子邮件更改.";
             return Page();
         }
     }
