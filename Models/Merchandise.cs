@@ -3,18 +3,19 @@ using System.ComponentModel.DataAnnotations;
 
 namespace 管理系统.Models
 {
-    public class Stock
+    [Display(Name = "商品")]
+    public class Merchandise
     {
         [Key]
         [Required(ErrorMessage = "{0} 不能为空")]
         [DataType(DataType.Text)]
         [Display(Name = "商品编码")]
-        public string CommodityCode { get; set; }
+        public string Id { get; set; }
 
         [Required(ErrorMessage = "{0} 不能为空")]
         [DataType(DataType.Text)]
         [Display(Name = "商品名称")]
-        public string CommodityName { get; set; }
+        public string Name { get; set; }
 
         [Required(ErrorMessage = "{0} 不能为空")]
         [DataType(DataType.Text)]

@@ -1,0 +1,23 @@
+﻿@page
+@model EmailChangeConfirmationModel
+@{
+    ViewData["Title"] = "确认邮箱更改";
+    ViewData["ActivePage"] = ManageNavPages.Email;
+}
+
+<h1>@ViewData["Title"]</h1>
+@{
+    if (@Model.Error)
+    {
+        foreach (var i in Model.Msg)
+        {
+            <p>@i</p>
+        }
+    }
+    else
+    {
+        <p>
+            点击<a id="confirm-link" href="@Model.EmailConfirmationUrl">此处</a>确认您的帐户
+        </p>
+    }
+}

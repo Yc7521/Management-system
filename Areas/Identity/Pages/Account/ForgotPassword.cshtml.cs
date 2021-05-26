@@ -17,12 +17,10 @@ namespace 管理系统.Areas.Identity.Pages.Account
     public class ForgotPasswordModel : PageModel
     {
         private readonly UserManager<IdentityUser> _userManager;
-        private readonly IEmailSender _emailSender;
 
-        public ForgotPasswordModel(UserManager<IdentityUser> userManager, IEmailSender emailSender)
+        public ForgotPasswordModel(UserManager<IdentityUser> userManager)
         {
             _userManager = userManager;
-            _emailSender = emailSender;
         }
 
         [BindProperty]
@@ -43,7 +41,7 @@ namespace 管理系统.Areas.Identity.Pages.Account
                 if (user == null || !(await _userManager.IsEmailConfirmedAsync(user)))
                 {
                     // Don't reveal that the user does not exist or is not confirmed
-                    return RedirectToPage("./ForgotPasswordConfirmation");
+                    return RedirectToPage("./ForgotPasswordConfirmation", new { msg = "失败：未找到用户信息或未确认的邮箱" });
                 }
 
                 // For more information on how to enable account confirmation and password reset please 
@@ -56,12 +54,7 @@ namespace 管理系统.Areas.Identity.Pages.Account
                     values: new { area = "Identity", code },
                     protocol: Request.Scheme);
 
-                await _emailSender.SendEmailAsync(
-                    Input.Email,
-                    "重设密码",
-                    $"请通过以下方式重设密码 <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>点击这</a>.");
-
-                return RedirectToPage("./ForgotPasswordConfirmation");
+                return RedirectToPage("./ForgotPasswordConfirmation", new { msg = $"请通过以下方式重设密码 <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>点击这</a>." });
             }
 
             return Page();

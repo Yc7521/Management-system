@@ -1,72 +1,42 @@
 using System;
 using System.ComponentModel.DataAnnotations;
-using System.Collections.Generic;
 
 namespace 管理系统.Models
 {
+    [Display(Name = "入库")]
     public class BuyMerchandise
     {
         [Key]
         [Required(ErrorMessage = "{0} 不能为空")]
         [DataType(DataType.Text)]
-        [Display(Name = "订单编号")]
-        public string PurchaseOrder { get; set; }
-
-        [Required(ErrorMessage = "{0} 不能为空")]
-        [DataType(DataType.Date)]
-        [Display(Name = "开单日期")]
-        public DateTime BillingDate { get; set; }
+        [Display(Name = "商品编码")]
+        public string Id { get; set; }
 
         [Required(ErrorMessage = "{0} 不能为空")]
         [DataType(DataType.Text)]
-        [Display(Name = "库房")]
-        public string Storehouse { get; set; }
+        [Display(Name = "商品名称")]
+        public string Name { get; set; }
 
         [Required(ErrorMessage = "{0} 不能为空")]
         [DataType(DataType.Text)]
-        [Display(Name = "往来单位")]
-        public string ExchangeCompany { get; set; }
+        [Display(Name = "单位")]
+        public string Unit { get; set; }
 
         [Required(ErrorMessage = "{0} 不能为空")]
-        [DataType(DataType.Text)]
-        [Display(Name = "经办人")]
-        public string Manager { get; set; }
+        [Range(0, int.MaxValue, ErrorMessage = "请输入有效的整数")]
+        [Display(Name = "订货数")]
+        public int OrderNum { get; set; }
 
         [Required(ErrorMessage = "{0} 不能为空")]
-        [DataType(DataType.Text)]
-        [Display(Name = "确认")]
-        public bool Confirm { get; set; }
+        [Range(0, int.MaxValue, ErrorMessage = "请输入有效的整数")]
+        [Display(Name = "入库数")]
+        public int InboundNum { get; set; }
 
         [Required(ErrorMessage = "{0} 不能为空")]
-        [DataType(DataType.Date)]
-        [Display(Name = "确认时间")]
-        public DateTime ConfirmDate { get; set; }
+        [Range(0, int.MaxValue, ErrorMessage = "请输入有效的整数")]
+        [Display(Name = "剩余")]
+        public int Remainder { get; set; }
 
-        [Required(ErrorMessage = "{0} 不能为空")]
-        [DataType(DataType.Date)]
-        [Display(Name = "到货日期")]
-        public DateTime ArrivalDate { get; set; }
 
-        [Required(ErrorMessage = "{0} 不能为空")]
-        [DataType(DataType.Currency)]
-        [Display(Name = "合同金额")]
-        public decimal Contract { get; set; }
-
-        [Required(ErrorMessage = "{0} 不能为空")]
-        [DataType(DataType.Currency)]
-        [Display(Name = "预付金额")]
-        public decimal Prepaid { get; set; }
-
-        [Required(ErrorMessage = "{0} 不能为空")]
-        [DataType(DataType.Text)]
-        [Display(Name = "操作员")]
-        public string Operator { get; set; }
-
-        [DataType(DataType.MultilineText)]
-        [Display(Name = "说明")]
-        public string Explain { get; set; }
-
-        [Display(Name = "商品明细")]
-        public List<BuyMerchandise_Merchandise> CommodityDetails{ get; set;}
     }
 }

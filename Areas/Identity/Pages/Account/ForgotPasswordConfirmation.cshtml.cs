@@ -9,8 +9,9 @@ namespace 管理系统.Areas.Identity.Pages.Account
     [AllowAnonymous]
     public class ForgotPasswordConfirmation : PageModel
     {
-        public void OnGet()
+        public void OnGet(string msg = "")
         {
+            ViewData["msg"] = msg;
         }
     }
 }

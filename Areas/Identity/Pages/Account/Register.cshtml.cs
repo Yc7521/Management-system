@@ -76,6 +76,23 @@ namespace 管理系统.Areas.Identity.Pages.Account
             if (ModelState.IsValid)
             {
                 var user = new IdentityUser { UserName = Input.UserName };
+                // check password
+                var count = Input.Password.Where(c => char.IsLetter(c)).Count();
+                if (count == 0)
+                {
+                    ModelState.AddModelError(string.Empty, "密码必须至少包含一个字母 ('A'-'Z'或'a'-'z').");
+                }
+                count = Input.Password.Where(c => char.IsDigit(c)).Count();
+                if (count == 0)
+                {
+                    ModelState.AddModelError(string.Empty, "密码必须至少包含一个数字 ('0'-'9').");
+                }
+
+                if (ModelState.ErrorCount > 0)
+                {
+                    // something failed, redisplay form
+                    return Page();
+                }
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {

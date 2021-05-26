@@ -49,12 +49,12 @@ namespace 管理系统.Areas.Identity.Pages.Account
 
             // In our UI email and user name are one and the same, so when we update the email
             // we need to update the user name.
-            var setUserNameResult = await _userManager.SetUserNameAsync(user, email);
-            if (!setUserNameResult.Succeeded)
-            {
-                StatusMessage = "更改用户名时出错.";
-                return Page();
-            }
+            //var setUserNameResult = await _userManager.SetUserNameAsync(user, email);
+            //if (!setUserNameResult.Succeeded)
+            //{
+            //    StatusMessage = "更改用户名时出错.";
+            //    return Page();
+            //}
 
             await _signInManager.RefreshSignInAsync(user);
             StatusMessage = "感谢您确认您的电子邮件更改.";

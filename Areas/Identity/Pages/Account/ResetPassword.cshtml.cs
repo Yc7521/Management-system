@@ -47,7 +47,7 @@ namespace 管理系统.Areas.Identity.Pages.Account
         {
             if (code == null)
             {
-                return BadRequest("必须提供密码重置密码.");
+                return BadRequest("必须提供token以重置密码.");
             }
             else
             {
@@ -69,14 +69,14 @@ namespace 管理系统.Areas.Identity.Pages.Account
             var user = await _userManager.FindByEmailAsync(Input.UserName);
             if (user == null)
             {
-                // Don't reveal that the user does not exist
+                // the user does not exist
                 return RedirectToPage("./ResetPasswordConfirmation");
             }
 
             var result = await _userManager.ResetPasswordAsync(user, Input.Code, Input.Password);
             if (result.Succeeded)
             {
-                return RedirectToPage("./ResetPasswordConfirmation");
+                return RedirectToPage("./ResetPasswordConfirmation", new { stage = true });
             }
 
             foreach (var error in result.Errors)

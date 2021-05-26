@@ -10,9 +10,10 @@ namespace 管理系统.Areas.Identity.Pages.Account
     [AllowAnonymous]
     public class ResetPasswordConfirmationModel : PageModel
     {
-        public void OnGet()
+        public bool Succeeded { get; set; }
+        public void OnGet(bool stage = false)
         {
-
+            Succeeded = stage;
         }
     }
 }

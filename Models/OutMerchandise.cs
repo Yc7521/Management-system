@@ -1,56 +1,47 @@
 using System;
 using System.ComponentModel.DataAnnotations;
-using System.Collections.Generic;
 
 namespace 管理系统.Models
 {
+    [Display(Name = "出库")]
     public class OutMerchandise
     {
-        
         [Key]
         [Required(ErrorMessage = "{0} 不能为空")]
         [DataType(DataType.Text)]
-        [Display(Name = "出库单编号")]
-        public string OutboundOrder{ get; set;}
+        [Display(Name = "商品编码")]
+        public string Id { get; set; }
 
         [Required(ErrorMessage = "{0} 不能为空")]
         [DataType(DataType.Text)]
-        [Display(Name = "客户")]
-        public string Client{ get; set;}
+        [Display(Name = "商品名称")]
+        public string Name { get; set; }
 
         [Required(ErrorMessage = "{0} 不能为空")]
         [DataType(DataType.Text)]
-        [Display(Name = "经办")]
-        public string Handle{ get; set;}
+        [Display(Name = "单位")]
+        public string Unit { get; set; }
+
+        [Required(ErrorMessage = "{0} 不能为空")]
+        [Range(0, int.MaxValue, ErrorMessage = "请输入有效的整数")]
+        [Display(Name = "出库数")]
+        public int OrderNum { get; set; }
+
+        [Required(ErrorMessage = "{0} 不能为空")]
+        [Range(0, int.MaxValue, ErrorMessage = "请输入有效的整数")]
+        [Display(Name = "领料")]
+        public int PickingNum { get; set; }
 
         [Required(ErrorMessage = "{0} 不能为空")]
         [DataType(DataType.Text)]
-        [Display(Name = "发货方式")]
-        public string DeliveryMethod{ get; set;}
+        [Display(Name = "SN")]
+        public string SN { get; set; }
 
         [Required(ErrorMessage = "{0} 不能为空")]
         [DataType(DataType.Text)]
-        [Display(Name = "日期")]
-        public DateTime Date{ get; set;}
+        [Display(Name = "商品条码")]
+        public string BarCode { get; set; }
 
-        [Required(ErrorMessage = "{0} 不能为空")]
-        [DataType(DataType.Text)]
-        [Display(Name = "类型")]
-        public string Type{ get; set;}
 
-        [Required(ErrorMessage = "{0} 不能为空")]
-        [DataType(DataType.Text)]
-        [Display(Name = "经手人")]
-        public string HandleMan{ get; set;}
-
-        [Required(ErrorMessage = "{0} 不能为空")]
-        [DataType(DataType.Text)]
-        [Display(Name = "说明")]
-        public string Explain{ get; set;}
-
-        [Display(Name = "商品明细")]
-        public List<OutMerchandise_Merchandise> CommodityDetails{ get; set;}
-
-        
     }
 }
