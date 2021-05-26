@@ -1,0 +1,95 @@
+﻿@model IEnumerable<管理系统.Models.BuyMerchandiseList>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.BillingDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Storehouse)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExchangeCompany)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Manager)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Confirm)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ConfirmDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ArrivalDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Contract)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Prepaid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Operator)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Explain)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BillingDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Storehouse)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExchangeCompany)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Manager)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Confirm)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ConfirmDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ArrivalDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Contract)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Prepaid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Operator)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Explain)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

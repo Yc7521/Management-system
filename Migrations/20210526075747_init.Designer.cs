@@ -9,8 +9,8 @@ using 管理系统.Data;
 namespace 管理系统.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210520095108_Rick")]
-    partial class Rick
+    [Migration("20210526075747_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
